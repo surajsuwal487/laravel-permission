@@ -17,6 +17,7 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <a href="{{ route('view_posts') }}" class="link">View Posts</a>
         </div>
     </div>
 </div>

@@ -13,8 +13,11 @@
                         <div class="card-body card-dashboard">
                             <div class="">
                                 <table class="table zero-configuration" id='categorytable'>
+                                 @role('writer|admin')
                                     <a href="{{ route('create_post') }}" class="link">Create
                                         New</a>
+                                 @endrole
+                                 {{-- {{ dd(auth()->user()->getRoleNames()) }} --}}
                                     <thead>
                                         <tr>
                                             <th><i class=""></i> SN</th>
@@ -30,6 +33,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $post['title'] }}</td>
                                                     <td>{{ $post['body'] }}</td>
+                                                    @can('edit post')
                                                     <td class="row">
                                                         <form action="{{ route('edit_post') }}"
                                                             method="get">
@@ -40,6 +44,7 @@
                                                                 <i class="feather icon-edit"></i>Edit</button>
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         @else

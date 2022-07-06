@@ -27,6 +27,17 @@ class PostController extends BaseRepository
         }
     }
 
+    public function create()
+    {
+        try {
+            return view('post.create');
+        } catch (\Exception $e) {
+            $exception = $e->getMessage();
+            dd($e->getMessage());
+            return redirect()->back()->with('error', $exception);
+        }
+    }
+
 
     // public function edit(Request $request)
     // {
