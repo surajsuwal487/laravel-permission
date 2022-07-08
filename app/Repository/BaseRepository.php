@@ -53,6 +53,10 @@ class BaseRepository
    {
       return $this->model->where('slug', $slug)->first();
    }
+   public function findById($id)
+   {
+      return $this->model->where('id', $id)->first();
+   }
 
    public function deleteBySlug($slug)
    {

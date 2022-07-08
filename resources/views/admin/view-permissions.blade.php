@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Post <small class="text-muted">List</small></h4>
+                        <h4 class="card-title">Permissions <small class="text-muted">List</small></h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">
@@ -21,24 +21,20 @@
                                     <thead>
                                         <tr>
                                             <th><i class=""></i> SN</th>
-                                            <th><i class="fa fa-calendar"></i> Title</th>
-                                            <th><i class="fa fa-info"></i> Body</th>
+                                            <th><i class="fa fa-calendar"></i> Permissions</th>
                                             <th><i class="fa fa-cog"></i> Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($posts) > 0)
-                                            @foreach ($posts as $post)
+                                        @if (count($permissions) > 0)
+                                            @foreach ($permissions as $permission)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $post['title'] }}</td>
-                                                    <td>{{ $post['body'] }}</td>
+                                                    <td>{{ $permission['name'] }}</td>
                                                     @can('edit post')
                                                     <td class="row">
                                                         <form action="{{ route('edit_post') }}"
                                                             method="get">
-                                                            <input type="hidden" name="post"
-                                                            value="{{ $post['id'] }}">
                                                             <button type="submit"
                                                                 class="btn btn-icon btn-primary mr-1 waves-effect waves-light"
                                                                 data-toggle="tooltip" data-placement="top" title="edit"
@@ -59,8 +55,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><i class=""></i> SN</th>
-                                            <th><i class="fa fa-calendar"></i>Title</th>
-                                            <th><i class="fa fa-info"></i> Body</th>
+                                            <th><i class="fa fa-calendar"></i>Permissions</th>
                                             <th><i class="fa fa-cog"></i> Action</th>
                                         </tr>
                                     </tfoot>

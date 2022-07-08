@@ -18,6 +18,13 @@
                 </div>
             </div>
             <a href="{{ route('view_posts') }}" class="link">View Posts</a>
+            <br>
+            <a href="{{ route('view_roles') }}" class="link">View Role</a>
+            <br>
+            <a href="{{ route('view_permissions') }}" class="link">View Permission</a>
+            <br>
+            <a href="{{ route('view_users') }}" class="link">View Users</a>
+            
         </div>
     </div>
 </div>
