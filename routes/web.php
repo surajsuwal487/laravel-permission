@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,7 +12,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/sign-in/github', [HomeController::class, 'github'])->name('github');
+Route::get('/sign-in/github/redirect', [HomeController::class,'githubRedirect']);
 
 //Routes of posts
 Route::get('/view-posts', [PostController::class, 'index'])->name('view_posts');
