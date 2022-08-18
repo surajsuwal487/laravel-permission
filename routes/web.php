@@ -15,8 +15,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Login with github
 Route::get('/sign-in/github', [HomeController::class, 'github'])->name('github');
 Route::get('/sign-in/github/redirect', [HomeController::class,'githubRedirect']);
+
+//Login with facebook
+Route::get('/sign-in/facebook', [HomeController::class, 'facebook'])->name('facebook');
+Route::get('/sign-in/facebook/redirect', [HomeController::class,'facebookRedirect']);
 
 //Routes of posts
 Route::get('/view-posts', [PostController::class, 'index'])->name('view_posts');

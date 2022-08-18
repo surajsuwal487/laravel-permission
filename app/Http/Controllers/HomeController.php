@@ -29,6 +29,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
         // Role::create(['name' => 'admin']);
@@ -43,6 +44,14 @@ class HomeController extends Controller
         return Socialite::driver('github')->redirect();
     }
 
+    public function facebook(){
+        //send the users request to gitHub
+        // dd('here');
+        return Socialite::driver('facebook')->redirect();
+    }
+
+
+
     public function githubRedirect(){
         //get oauth request back from github to authenticate users
 
@@ -56,6 +65,22 @@ class HomeController extends Controller
         ]);
 
         Auth::login($user,true);
+        return redirect('/home');
+    }
+
+    public function facebookRedirect(){
+        //get oauth request back from github to authenticate users
+
+        $user = Socialite::driver('facebook')->user();
+        
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'name' => $user->name,
+            'password' => Hash::make(Str::random(24))
+        ]);
+
+        Auth::login($user);
         return redirect('/home');
     }
 }
